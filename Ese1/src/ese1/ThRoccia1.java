@@ -25,19 +25,19 @@ public class ThRoccia1 extends Thread {
     public void run()
     {
         try {
-            ptrDati.waitSem1();
+            ptrDati.waitSem1();//rimetto a zero il semaforo
             
-            System.out.println("INIZIO DISINTEGRAZIONE ROCCIA 1");
+            System.out.println("INIZIO DISINTEGRAZIONE ROCCIA 1");//la roccia inizia a disintegrarsi
             
             Random r = new Random();
             
             int n = r.nextInt(1)+2;
             
-            Thread.sleep(n*1000);
+            Thread.sleep(n*1000);// generazione random tempo di attesa
             
-            System.out.println("FINE DISINTEGRAZIONE ROCCIA 1");
+            System.out.println("FINE DISINTEGRAZIONE ROCCIA 1");//la roccia finisce a disintegrarsi
             
-            ptrDati.signalSem2();
+            ptrDati.signalSem2(); // ritorno al thread razzo per rimettere il semaforo a zero
             
         } catch (InterruptedException ex) {
             Logger.getLogger(ThRoccia1.class.getName()).log(Level.SEVERE, null, ex);
